@@ -76,6 +76,7 @@ const config: Config = {
         "shimmer-slide": "slide 20s linear infinite",
         grain: "grain 8s steps(10) infinite",
          scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+         aurora: "aurora 60s linear infinite",
       },
       keyframes: {
         spotlight: {
@@ -87,6 +88,15 @@ const config: Config = {
             transform: "translate(calc(-50% - 0.5rem))",
           },
         },
+
+        aurora: {
+    from: {
+      backgroundPosition: "50% 50%, 50% 50%",
+    },
+    to: {
+      backgroundPosition: "350% 50%, 350% 50%",
+    },
+  },
 
 
         shimmer: {

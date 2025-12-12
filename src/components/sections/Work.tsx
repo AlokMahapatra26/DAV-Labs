@@ -11,7 +11,7 @@ const projects = [
     title: "Remote Work Collaboration",
     category: "Web App",
     description: "A Complete Solution for companies which operate online.",
-    image: "/assets/teletrabago.png", 
+    image: "/assets/teletrabago.png",
     link: "https://teletrabago.vercel.app/"
   },
   {
@@ -32,24 +32,24 @@ const projects = [
 
 export function Work() {
   return (
-    <section id="work" className="py-24 bg-black relative overflow-hidden">
+    <section id="work" className="py-24 bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        
+
         {/* Section Title */}
-        <TextReveal className="font-heading text-3xl md:text-5xl font-bold text-white mb-16">
+        <TextReveal className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-16">
           Selected Work
         </TextReveal>
-        
+
         {/* 3D Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, idx) => (
             <CardContainer key={idx} className="inter-var w-full">
-              <CardBody className="bg-zinc-900 relative group/card border-white/10 w-full h-auto rounded-3xl p-6 border hover:border-cyan-500/50 transition-colors duration-500">
-                
+              <CardBody className="bg-card relative group/card border-border w-full h-auto rounded-3xl p-6 border hover:border-cyan-500/50 transition-colors duration-500">
+
                 {/* 1. Title (Pops out slightly) */}
                 <CardItem
                   translateZ="50"
-                  className="text-xl font-bold text-white font-heading"
+                  className="text-xl font-bold text-foreground font-heading"
                 >
                   {project.title}
                 </CardItem>
@@ -58,7 +58,7 @@ export function Work() {
                 <CardItem
                   as="p"
                   translateZ="60"
-                  className="text-zinc-400 text-sm max-w-sm mt-2"
+                  className="text-muted-foreground text-sm max-w-sm mt-2"
                 >
                   {project.description}
                 </CardItem>
@@ -80,22 +80,22 @@ export function Work() {
 
                 {/* 4. Footer: Category Badge & Button */}
                 <div className="flex justify-between items-center mt-10">
-                  
+
                   {/* Category Badge */}
                   <CardItem
                     translateZ={20}
-                    className="px-4 py-2 rounded-full bg-zinc-800 text-xs font-bold text-white border border-white/5"
+                    className="px-4 py-2 rounded-full bg-accent text-xs font-bold text-foreground border border-border"
                   >
                     {project.category}
                   </CardItem>
-                  
+
                   {/* Link Button */}
                   <CardItem
                     translateZ={20}
                     as={Link}
                     href={project.link}
                     target="_blank"
-                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black text-xs font-bold hover:bg-cyan-500 hover:text-white transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold hover:bg-cyan-500 hover:text-white transition-colors"
                   >
                     View Project <ArrowUpRight className="w-3 h-3" />
                   </CardItem>

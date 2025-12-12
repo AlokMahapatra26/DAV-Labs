@@ -18,13 +18,13 @@ export function GoogleGeminiEffectDemo() {
 
   return (
     <div
-      className="h-[400vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
+      className="h-[400vh] bg-background w-full border border-border rounded-md relative pt-40 overflow-clip"
       ref={ref}
     >
       <GoogleGeminiEffect
         title="Build with us DAV Labs"
         description="Design , Develop , and Ship"
-        
+
         pathLengths={[
           pathLengthFirst,
           pathLengthSecond,

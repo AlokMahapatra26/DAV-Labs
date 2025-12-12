@@ -13,21 +13,21 @@ InfiniteMovingCardsDemo
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black antialiased selection:bg-cyan-500 selection:text-cyan-900">
+    <main className="min-h-screen bg-background text-foreground antialiased selection:bg-cyan-500 dark:selection:bg-cyan-500 selection:text-cyan-900 dark:selection:text-cyan-900">
       <Navbar />
-       
+
       <Hero />
-     <TextHoverEffect text="DAV Labs"/>
-     
+      <TextHoverEffect text="DAV Labs" />
+
       <Services />
       <Work />
       <InfiniteMovingCardsDemo />
-      
+
       <Team />
       <Contact />
-      <GoogleGeminiEffectDemo/>
+      <GoogleGeminiEffectDemo />
       <Footer />
-     
+
     </main>
   );
 }

@@ -5,16 +5,17 @@ import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { FluidCursor } from "@/components/ui/FluidCursor";
 import SmoothScroll from "@/components/utils/SmoothScroll";
 import { GrainTexture } from "@/components/ui/GrainTexture";
+import { ThemeProvider } from "@/components/context/ThemeProvider";
 
 
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ["latin"], 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
   variable: "--font-space",
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const inter = Inter({ 
-  subsets: ["latin"], 
+const inter = Inter({
+  subsets: ["latin"],
   variable: "--font-inter",
 });
 
@@ -29,14 +30,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${spaceGrotesk.variable} ${inter.variable} font-sans antialiased bg-black text-white`}>
-        <SmoothScroll />
-        <GrainTexture />
-        <FluidCursor />
-        {children}
-        
-        <WhatsAppButton/>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${spaceGrotesk.variable} ${inter.variable} font-sans antialiased bg-background text-foreground transition-colors duration-300`}>
+        <ThemeProvider>
+          <SmoothScroll />
+          <GrainTexture />
+          <FluidCursor />
+          {children}
+
+          <WhatsAppButton />
+        </ThemeProvider>
       </body>
     </html>
   );
