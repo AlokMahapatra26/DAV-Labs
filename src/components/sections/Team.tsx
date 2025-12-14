@@ -3,7 +3,7 @@ import { TextReveal } from "../ui/TextReveal";
 
 const team = [
   {
-    name: "Deep Patel",
+    name: "Deep Mistry",
     role: "Founder",
     image: "/assets/deep.png"
   },
