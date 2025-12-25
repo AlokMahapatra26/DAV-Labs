@@ -13,7 +13,7 @@ const team = [
   {
     name: "Vikas Prasad",
     role: "Founding Member (Growth)",
-    image: "/assets/vikas.png"
+    image: "/assets/vikas.jpg"
   },
   {
     name: "Alok Mahapatra",
