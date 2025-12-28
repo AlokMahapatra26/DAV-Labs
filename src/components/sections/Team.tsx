@@ -8,7 +8,7 @@ const team = [
   {
     name: "Deep Mistry",
     role: "Founding Member (Growth)",
-    image: "/assets/deep.png"
+    image: "/assets/deep.jpg"
   },
   {
     name: "Vikas Prasad",
@@ -21,9 +21,9 @@ const team = [
     image: "/assets/alok.jpg"
   },
   {
-    name: "Raj",
+    name: "Raj Prajapati",
     role: "Founding Member (App Developer)",
-    image: "/assets/raj.png"
+    image: "/assets/raj.jpg"
   },
 ];
 

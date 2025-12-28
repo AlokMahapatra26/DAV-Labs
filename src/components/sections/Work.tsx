@@ -27,7 +27,8 @@ const projects = [
     description: "A Simple modern cloud storage service",
     image: "/assets/cloudsaf.png",
     link: "https://cloudsaf-client.vercel.app/"
-  }
+  },
+
 ];
 
 export function Work() {

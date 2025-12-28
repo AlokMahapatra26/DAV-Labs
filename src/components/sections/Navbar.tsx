@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { HyperText } from "@/components/ui/HyperText";
+// import { HyperText } from "@/components/ui/HyperText";
 import Magnetic from "@/components/ui/Magnetic";
 import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -25,7 +25,12 @@ export function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="text-zinc-900 dark:text-white font-heading font-bold text-xl tracking-wider cursor-pointer z-50">
-          <HyperText text="DAV Labs" />
+         <img
+          src="/assets/logo.png"
+          alt="DAV Labs Logo"
+          width={100}
+          height={40}
+         />
         </Link>
 
         {/* Desktop Menu with Sliding Pill + Magnetic */}
