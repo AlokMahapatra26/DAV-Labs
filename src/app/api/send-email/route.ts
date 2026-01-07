@@ -5,10 +5,12 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
   try {
-    const { name, email, phone , service, message } = await req.json();
+    const { name, email, phone, service, message } = await req.json();
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: process.env.EMAIL_HOST || 'smtpout.secureserver.net',
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -17,9 +19,9 @@ export async function POST(req: Request) {
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, 
-      replyTo: email, 
-      subject: `DAV Labs Inquiry: ${service} from ${name}`,
+      to: process.env.EMAIL_USER,
+      replyTo: email,
+      subject: `DAVLabs Inquiry: ${service} from ${name}`,
       text: `
         Name: ${name}
         Email: ${email}

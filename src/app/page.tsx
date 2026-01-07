@@ -21,7 +21,7 @@ export default function Home() {
 
       <Services />
       <Work />
-      <InfiniteMovingCardsDemo />
+      {/* <InfiniteMovingCardsDemo /> */}
 
       <Team />
       <Contact />
