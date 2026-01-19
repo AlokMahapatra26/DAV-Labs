@@ -3,7 +3,7 @@ import { IconBrandWhatsapp } from "@tabler/icons-react";
 
 export function WhatsAppButton() {
   // Replace with your actual number (include country code, no spaces/plus)
-  const phoneNumber = "918849561649";
+  const phoneNumber = "+919876543210";
   const message = "Hi DAV Labs, I'm interested in your services.";
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
