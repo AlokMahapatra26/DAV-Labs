@@ -3,7 +3,7 @@ import { IconBrandWhatsapp } from "@tabler/icons-react";
 
 export function WhatsAppButton() {
   // Replace with your actual number (include country code, no spaces/plus)
-  const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER
+  const phoneNumber = "918849561649";
   const message = "Hi DAV Labs, I'm interested in your services.";
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -22,12 +22,8 @@ export function WhatsAppButton() {
       </span>
 
       {/* The Button */}
-      <div className="relative flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] hover:shadow-[0_0_30px_rgba(34,197,94,0.8)] transition-all duration-300 hover:scale-110">
-        
-        {/* Animate Pulse Ring */}
-        <div className="absolute inset-0 rounded-full border border-green-400 animate-ping opacity-75" />
-        
-        <IconBrandWhatsapp className="text-white w-8 h-8 relative z-10" stroke={2} />
+      <div className="relative flex items-center justify-center w-10 h-10 bg-background rounded-full border border-border shadow-sm hover:bg-muted transition-all duration-300 hover:scale-105">
+        <IconBrandWhatsapp className="text-foreground w-5 h-5 relative z-10" stroke={1.5} />
       </div>
     </a>
   );

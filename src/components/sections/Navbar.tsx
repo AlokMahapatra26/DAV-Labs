@@ -25,12 +25,12 @@ export function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="text-zinc-900 dark:text-white font-heading font-bold text-xl tracking-wider cursor-pointer z-50">
-         <img
-          src="/assets/logo.png"
-          alt="DAV Labs Logo"
-          width={100}
-          height={40}
-         />
+          <img
+            src="/assets/logo.png"
+            alt="DAV Labs Logo"
+            width={100}
+            height={40}
+          />
         </Link>
 
         {/* Desktop Menu with Sliding Pill + Magnetic */}

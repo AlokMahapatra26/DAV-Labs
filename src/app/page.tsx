@@ -1,34 +1,17 @@
-import { Navbar } from "@/components/sections/Navbar";
-import { Hero } from "@/components/sections/Hero";
-import { Services } from "@/components/sections/Services";
-import { Work } from "@/components/sections/Work";
-import { Team } from "@/components/sections/Team";
-import { Contact } from "@/components/sections/Contact"; // New import
-import { Footer } from "@/components/sections/Footer";
-import { TextHoverEffect } from "@/components/ui/text-hover-effect";
-import { InfiniteMovingCardsDemo } from "@/components/ace-com/InfitiniteMovingCards";
-import { GoogleGeminiEffectDemo } from "@/components/ace-com/GoogleGeminiEffectDemo";
-InfiniteMovingCardsDemo
+import { VerveHero } from "@/components/verve/Hero";
+import { VerveServices } from "@/components/verve/Services";
+import { VerveAbout } from "@/components/verve/About";
+import { VerveMarquee } from "@/components/verve/Marquee";
+import { VerveFAQ } from "@/components/verve/FAQ";
 
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground antialiased selection:bg-cyan-500 dark:selection:bg-cyan-500 selection:text-cyan-900 dark:selection:text-cyan-900">
-      <Navbar />
-
-      <Hero />
-
-
-      <Services />
-      <Work />
-      {/* <InfiniteMovingCardsDemo /> */}
-
-      <Team />
-      <Contact />
-      <TextHoverEffect text="DAV Labs" />
-      <GoogleGeminiEffectDemo />
-      <Footer />
-
-    </main>
+    <div className="bg-background text-foreground">
+      <VerveHero />
+      <VerveServices />
+      <VerveFAQ />
+      <VerveAbout />
+    </div>
   );
 }

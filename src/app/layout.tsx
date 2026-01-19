@@ -1,28 +1,31 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { FluidCursor } from "@/components/ui/FluidCursor";
 import SmoothScroll from "@/components/utils/SmoothScroll";
-import { GrainTexture } from "@/components/ui/GrainTexture";
 import { ThemeProvider } from "@/components/context/ThemeProvider";
+import { Header } from "@/components/layout/Header";
+// import { Footer } from "@/components/layout/Footer"; // Old footer
+import { VerveFooter } from "@/components/verve/Footer";
 
-
-const spaceGrotesk = Space_Grotesk({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-space",
-  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-bricolage",
+  // Variable font, weights are automatic usually, but we can specify if needed
 });
 
-const inter = Inter({
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-hanken",
 });
 
 export const metadata: Metadata = {
   title: "DAV Labs",
   description: "The new standard in digital experiences.",
 };
+
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -31,14 +34,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} ${inter.variable} font-sans antialiased bg-background text-foreground transition-colors duration-300`}>
+      <body className={`${bricolage.variable} ${hanken.variable} font-sans antialiased bg-background text-foreground transition-colors duration-300`}>
         <ThemeProvider>
           <SmoothScroll />
-          <GrainTexture />
+          {/* <GrainTexture /> */}
           <FluidCursor />
-          {children}
-
           <WhatsAppButton />
+          <Header />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <VerveFooter />
+          <Toaster position="top-center" />
+          {/* <Footer /> */}
+          {/* Footer is now part of page content in this design or we can add VerveFooter here if we want it global */}
         </ThemeProvider>
       </body>
     </html>
