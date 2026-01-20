@@ -15,7 +15,7 @@ export function VerveFooter() {
                     </div>
                     <div className="text-left">
                         <h4 className="text-primary text-xs font-bold uppercase tracking-widest mb-2">Call Us</h4>
-                        <a href="tel:+919876543210" className="text-lg font-bold hover:text-primary transition-colors">+91 98765 43210</a>
+                        <a href="tel:+919876543210" className="text-lg font-bold hover:text-primary transition-colors">+91 84691 59877</a>
                         <br /><a href="tel:+91876543210" className="text-lg font-bold hover:text-primary transition-colors">+91 88495 61649</a>
                     </div>
                 </div>
