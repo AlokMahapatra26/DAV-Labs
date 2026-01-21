@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const services = [
@@ -50,43 +49,36 @@ const services = [
 ];
 
 export function VerveServices() {
-    const targetRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: targetRef,
-    });
-
-    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
-
     return (
-        <section ref={targetRef} className="relative h-[300vh] bg-background">
-            <div className="sticky top-0 flex flex-col justify-center h-[45vh] md:h-[70vh] overflow-hidden border-b border-dashed border-border">
-                <div className="container mx-auto px-4">
-                    <div className="mb-4 md:mb-6 text-center">
-                        <h2 className="text-xl md:text-3xl font-heading font-medium uppercase text-foreground leading-none tracking-tight mb-1">
-                            Our <span className="text-primary">Expertise</span>
-                        </h2>
-                        <p className="text-xs text-muted-foreground max-w-md mx-auto">
-                            Scroll to explore our services.
-                        </p>
-                    </div>
+        <section className="py-12 bg-background">
+            <div className="container mx-auto px-4">
+                <div className="mb-12 text-center">
+                    <h2 className="text-3xl md:text-5xl font-heading font-medium uppercase text-foreground leading-none tracking-tight mb-2">
+                        Our <span className="text-primary">Expertise</span>
+                    </h2>
+                    <p className="text-sm text-muted-foreground max-w-md mx-auto">
+                        Comprehensive digital solutions for modern businesses.
+                    </p>
+                </div>
 
-                    <div className="overflow-hidden">
-                        <motion.div style={{ x }} className="flex gap-4 w-max">
-                            {services.map((service, index) => (
-                                <ServiceCard key={index} service={service} />
-                            ))}
-                        </motion.div>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    {services.map((service, index) => (
+                        <ServiceCard key={index} service={service} index={index} />
+                    ))}
                 </div>
             </div>
         </section>
     );
 }
 
-function ServiceCard({ service }: { service: typeof services[0] }) {
+function ServiceCard({ service, index }: { service: typeof services[0], index: number }) {
     return (
         <motion.div
-            className="group relative h-[260px] w-[200px] md:h-[360px] md:w-[280px] shrink-0 overflow-hidden rounded-xl border border-dashed border-border bg-card flex flex-col cursor-pointer"
+            className="group relative h-[360px] w-full overflow-hidden rounded-xl border border-dashed border-border bg-card flex flex-col cursor-pointer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
             whileHover={{ y: -5, transition: { duration: 0.3 } }}
         >
             {/* Image Section */}
@@ -98,7 +90,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
                 />
                 <motion.div
-                    className="absolute top-2 right-2 z-20 w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm border border-dashed border-border flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                    className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm border border-dashed border-border flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300"
                     whileHover={{ rotate: 45 }}
                 >
                     <ArrowUpRight className="w-4 h-4" />
@@ -106,22 +98,22 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
             </div>
 
             {/* Content Section */}
-            <div className="h-1/2 w-full p-4 md:p-6 flex flex-col justify-between bg-card relative group-hover:bg-muted/5 transition-colors duration-300">
+            <div className="h-1/2 w-full p-6 flex flex-col justify-between bg-card relative group-hover:bg-muted/5 transition-colors duration-300">
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
                 <div>
-                    <div className="flex justify-between items-center mb-2">
-                        <span className="inline-block px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-widest text-primary bg-primary/10 rounded border border-primary/20">
+                    <div className="flex justify-between items-center mb-3">
+                        <span className="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 rounded border border-primary/20">
                             {service.category}
                         </span>
-                        <span className="text-[10px] font-mono text-muted-foreground/40">{service.id}</span>
+                        <span className="text-xs font-mono text-muted-foreground/40">{service.id}</span>
                     </div>
-                    <h3 className="text-sm md:text-lg font-heading font-medium uppercase text-foreground mb-1 group-hover:text-primary transition-colors duration-300 leading-tight">
+                    <h3 className="text-xl font-heading font-medium uppercase text-foreground mb-1 group-hover:text-primary transition-colors duration-300 leading-tight">
                         {service.title}
                     </h3>
                 </div>
 
-                <p className="text-[10px] md:text-xs text-muted-foreground leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">
+                <p className="text-sm text-muted-foreground leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">
                     {service.description}
                 </p>
             </div>

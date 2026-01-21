@@ -87,7 +87,7 @@ export function Header() {
                     <div className="hidden md:flex items-center gap-4">
                         <ThemeToggle />
                         <Link href="/contact">
-                            <Button className="rounded-none bg-foreground text-background hover:bg-primary hover:text-white font-bold uppercase tracking-widest">
+                            <Button className="rounded-full bg-foreground text-background hover:bg-primary hover:text-white font-bold uppercase tracking-widest">
                                 Let&apos;s Talk
                             </Button>
                         </Link>

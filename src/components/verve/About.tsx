@@ -3,26 +3,30 @@ import { ArrowRight } from "lucide-react";
 
 export function VerveAbout() {
     return (
-        <section className="py-16 bg-background border-b border-dashed border-border relative overflow-hidden">
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase mb-4 leading-tight">
-                        Shaping The <span className="text-primary">Future</span> <br />
-                        Of Digital Experiences
+        <section className="py-12 px-4 bg-background flex justify-center">
+            <div className="container max-w-3xl">
+                <div className="bg-card border border-border rounded-3xl p-8 md:p-12 text-center shadow-sm relative overflow-hidden">
+                    {/* Decorative Background */}
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
+                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
+                    <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
+
+                    <h2 className="text-2xl md:text-3xl font-heading font-bold uppercase mb-3 leading-tight">
+                        Shaping The <span className="text-primary">Future</span>
                     </h2>
-                    <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed font-light max-w-2xl mx-auto">
-                        DAVLabs is a collective of elite engineers, designers, and strategists. We build high-performance digital infrastructure that drives growth and defines industries.
+                    <p className="text-sm md:text-base text-muted-foreground mb-6 leading-relaxed font-light max-w-lg mx-auto">
+                        DAVLabs is a collective of elite engineers and designers building high-performance digital infrastructure.
                     </p>
 
-                    <Link href="/agency" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest border-b border-primary pb-1 hover:text-primary transition-colors group">
+                    <Link
+                        href="/agency"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300 group"
+                    >
                         Discover Our Agency
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>
             </div>
-
-            {/* Decorative Background Element */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[100px] rounded-full -z-10 pointer-events-none" />
         </section>
     );
 }
