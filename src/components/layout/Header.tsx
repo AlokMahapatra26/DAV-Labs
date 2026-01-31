@@ -9,6 +9,7 @@ import { createPortal } from "react-dom";
 
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { MorphicNavbar } from "@/components/kokonutui/morphic-navbar";
+import { VisitorCounter } from "@/components/layout/VisitorCounter";
 
 const menuVariants: Variants = {
     closed: {
@@ -106,45 +107,48 @@ export function Header() {
                     </div>
                 </div>
             </header>
+            <VisitorCounter />
 
             {/* Mobile Menu Portal */}
-            {mounted && createPortal(
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            initial="closed"
-                            animate="open"
-                            exit="closed"
-                            variants={menuVariants}
-                            className="fixed inset-0 z-[60] flex flex-col justify-center items-center md:hidden"
-                            style={{ backgroundColor: "#000000" }}
-                        >
-                            <div className="flex flex-col gap-8 text-center">
-                                {navLinks.map((link) => (
-                                    <motion.div key={link.href} variants={linkVariants}>
-                                        <Link
-                                            href={link.href}
-                                            onClick={toggleMenu}
-                                            className="text-4xl font-heading font-bold uppercase tracking-tighter hover:text-primary transition-colors text-white"
-                                        >
-                                            {link.label}
+            {
+                mounted && createPortal(
+                    <AnimatePresence>
+                        {isOpen && (
+                            <motion.div
+                                initial="closed"
+                                animate="open"
+                                exit="closed"
+                                variants={menuVariants}
+                                className="fixed inset-0 z-[60] flex flex-col justify-center items-center md:hidden"
+                                style={{ backgroundColor: "#000000" }}
+                            >
+                                <div className="flex flex-col gap-8 text-center">
+                                    {navLinks.map((link) => (
+                                        <motion.div key={link.href} variants={linkVariants}>
+                                            <Link
+                                                href={link.href}
+                                                onClick={toggleMenu}
+                                                className="text-4xl font-heading font-bold uppercase tracking-tighter hover:text-primary transition-colors text-white"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        </motion.div>
+                                    ))}
+
+                                    <motion.div variants={linkVariants} className="mt-8">
+                                        <Link href="/contact" onClick={toggleMenu}>
+                                            <Button className="rounded-none bg-primary text-primary-foreground hover:bg-white hover:text-black font-bold text-lg px-10 py-6 uppercase tracking-widest">
+                                                Start A Project
+                                            </Button>
                                         </Link>
                                     </motion.div>
-                                ))}
-
-                                <motion.div variants={linkVariants} className="mt-8">
-                                    <Link href="/contact" onClick={toggleMenu}>
-                                        <Button className="rounded-none bg-primary text-primary-foreground hover:bg-white hover:text-black font-bold text-lg px-10 py-6 uppercase tracking-widest">
-                                            Start A Project
-                                        </Button>
-                                    </Link>
-                                </motion.div>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>,
-                document.body
-            )}
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>,
+                    document.body
+                )
+            }
         </>
     );
 }
