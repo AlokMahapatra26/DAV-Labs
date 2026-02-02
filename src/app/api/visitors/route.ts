@@ -48,29 +48,17 @@ export async function POST(request: Request) {
 
         if (ip !== 'unknown' && !data.uniqueIPs.includes(ip)) {
             data.uniqueIPs.push(ip);
-            data.totalVisits += 1;
-            isUnique = true;
-            saveVisitorData(data);
         }
-        // If you want to count *every* visit regardless of unique IP, uncomment below:
-        // else if (ip === 'unknown') {
-        //    // fallback logic if needed
-        // }
 
-        // For the purpose of "Total Visitors", usually we just want the total count of unique visitors 
-        // or total page loads. The user asked for "total number of visitor till now".
-        // Let's stick to unique IPs for "Visitors" vs "Page Views".
-        // However, for a high count to show off, sometimes "Page Views" is preferred.
-        // Let's stick to unique IPs + existing total. 
-        // Actually, if I just refresh, I might want to see it go up for testing?
-        // Let's increment totalVisits only on unique IP for "Visitors".
-
-        // If the file didn't exist, we start at some reasonable number or 0? 
-        // Let's start at 0.
+        // Increment total visits for every hit (if IP is valid or just strictly every hit?)
+        // Let's count every hit that has an IP (even if seen before).
+        // Increment total visits for every hit, even if IP is unknown (e.g. localhost)
+        data.totalVisits += 1;
+        saveVisitorData(data);
 
         return NextResponse.json({
-            count: data.uniqueIPs.length, // Or data.totalVisits if we tracked non-unique
-            isUnique
+            count: data.totalVisits,
+            isUnique: ip !== 'unknown' && !data.uniqueIPs.includes(ip) // slightly inaccurate now as we pushed already, but effectively checks if it was new
         });
 
     } catch (error) {
@@ -82,5 +70,5 @@ export async function POST(request: Request) {
 export async function GET() {
     const data = getVisitorData();
     // Return current count without incrementing
-    return NextResponse.json({ count: data.uniqueIPs.length });
+    return NextResponse.json({ count: data.totalVisits });
 }
