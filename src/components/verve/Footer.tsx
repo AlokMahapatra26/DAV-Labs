@@ -19,6 +19,7 @@ export function VerveFooter() {
                             <div className="flex flex-col">
                                 <a href="tel:+918469159877" className="text-base font-bold hover:text-primary transition-colors">+91 84691 59877</a>
                                 <a href="tel:+918849561649" className="text-base font-bold hover:text-primary transition-colors">+91 88495 61649</a>
+                                <a href="tel:+917383149649" className="text-base font-bold hover:text-primary transition-colors">+91 73831 49649</a>
                             </div>
                         </div>
                     </div>

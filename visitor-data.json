@@ -1,6 +1,7 @@
 {
-  "totalVisits": 1,
+  "totalVisits": 2,
   "uniqueIPs": [
-    "::1"
+    "::1",
+    "::ffff:10.194.161.191"
   ]
 }
