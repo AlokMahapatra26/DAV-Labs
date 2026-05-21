@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { FluidCursor } from "@/components/ui/FluidCursor";
 import SmoothScroll from "@/components/utils/SmoothScroll";
 import { ThemeProvider } from "@/components/context/ThemeProvider";
@@ -39,7 +38,6 @@ export default function RootLayout({
           <SmoothScroll />
           {/* <GrainTexture /> */}
           <FluidCursor />
-          <WhatsAppButton />
           <Header />
           <main className="min-h-screen">
             {children}
