@@ -1,11 +1,32 @@
-import { link } from 'fs';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-
 export async function POST(req: Request) {
   try {
-    const { name, email, phone, service, message } = await req.json();
+    const { name, email, phone, service, message, turnstileToken } = await req.json();
+
+    // Verify Turnstile Token
+    if (!turnstileToken) {
+      return NextResponse.json({ message: 'Missing Turnstile token' }, { status: 400 });
+    }
+
+    const verifyEndpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+    const secretKey = '0x4AAAAAADT7gy2_hkPm85bhEIa1-qR4TXk';
+
+    const verificationResponse = await fetch(verifyEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${encodeURIComponent(secretKey)}&response=${encodeURIComponent(turnstileToken)}`,
+    });
+
+    const verificationResult = await verificationResponse.json();
+
+    if (!verificationResult.success) {
+      console.error('Turnstile verification failed:', verificationResult);
+      return NextResponse.json({ message: 'Captcha verification failed' }, { status: 400 });
+    }
 
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST || 'smtpout.secureserver.net',

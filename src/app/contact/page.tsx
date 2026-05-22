@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Mail, MapPin, Phone, Loader2, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Turnstile } from '@marsidev/react-turnstile';
 
 export default function ContactPage() {
     const [loading, setLoading] = useState(false);
+    const [turnstileToken, setTurnstileToken] = useState("");
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -16,7 +18,11 @@ export default function ContactPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
+        if (!turnstileToken) {
+            toast.error("Please complete the captcha.");
+            setLoading(false);
+            return;
+        }
 
         try {
             const response = await fetch("/api/send-email", {
@@ -29,7 +35,8 @@ export default function ContactPage() {
                     email: formData.email,
                     service: formData.subject, // Mapping subject to service as per API
                     message: formData.message,
-                    phone: "Not provided"
+                    phone: "Not provided",
+                    turnstileToken
                 }),
             });
 
@@ -151,9 +158,17 @@ export default function ContactPage() {
                                 />
                             </div>
 
+                            <div className="mb-4">
+                                <Turnstile 
+                                    siteKey="0x4AAAAAADT7g0egbRgHGtq_" 
+                                    onSuccess={(token) => setTurnstileToken(token)}
+                                    options={{ theme: 'auto' }}
+                                />
+                            </div>
+
                             <Button
                                 type="submit"
-                                disabled={loading}
+                                disabled={loading || !turnstileToken}
                                 className="w-full md:w-auto px-10 py-6 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-widest text-sm transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {loading ? (
