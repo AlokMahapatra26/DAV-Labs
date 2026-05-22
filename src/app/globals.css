@@ -5,8 +5,8 @@
 @layer base {
   :root {
     /* Beautiful Light Mode (Swiss Style) */
-    --background: 0 0% 100%;
-    /* Pure White */
+    --background: 220 14% 96%;
+    /* Soft Off-White — easy on the eyes */
     --foreground: 240 10% 3.9%;
     /* Zinc 950 */
 

@@ -9,7 +9,7 @@ import { createPortal } from "react-dom";
 
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { MorphicNavbar } from "@/components/kokonutui/morphic-navbar";
-import { VisitorCounter } from "@/components/layout/VisitorCounter";
+
 
 const menuVariants: Variants = {
     closed: {
@@ -107,7 +107,7 @@ export function Header() {
                     </div>
                 </div>
             </header>
-            <VisitorCounter />
+
 
             {/* Mobile Menu Portal */}
             {

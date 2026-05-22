@@ -114,9 +114,6 @@ export function VerveFooter() {
                                     <span className="text-sm text-muted-foreground leading-relaxed">
                                         Gujarat, Valsad, Vapi - 396195
                                     </span>
-                                    <span className="text-[10px] font-bold text-primary/80 uppercase tracking-widest bg-primary/10 w-fit px-2 py-0.5 rounded-full mt-1">
-                                        Official Address Coming Soon
-                                    </span>
                                 </div>
                             </li>
                             <li className="flex items-start gap-3">
