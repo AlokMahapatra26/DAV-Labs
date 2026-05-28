@@ -91,8 +91,8 @@ export default function AgencyPage() {
                     <div className="flex flex-wrap justify-center gap-12 md:gap-20">
                         {[
                             { name: "Deep", image: "/assets/deep.jpeg" },
-                            { name: "Vikas", image: "/assets/vikas.jpg" },
                             { name: "Alok", image: "/assets/alok.jpg" },
+                            { name: "Vikas", image: "/assets/vikas.jpg" },
 
                         ].map((member, index) => (
                             <TeamCard key={index} member={member} index={index} />
