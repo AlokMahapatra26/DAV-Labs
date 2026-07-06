@@ -80,25 +80,7 @@ export default function AgencyPage() {
                     </div>
                 </div>
 
-                {/* Team Section */}
-                <div className="py-10">
-                    <div className="flex items-center gap-4 mb-12">
-                        <div className="h-px flex-1 bg-border border-t border-dashed border-border" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">The Visionaries</span>
-                        <div className="h-px flex-1 bg-border border-t border-dashed border-border" />
-                    </div>
 
-                    <div className="flex flex-wrap justify-center gap-12 md:gap-20">
-                        {[
-                            { name: "Deep", image: "/assets/deep.jpeg" },
-                            { name: "Alok", image: "/assets/alok.jpg" },
-                            { name: "Vikas", image: "/assets/vikas.jpg" },
-
-                        ].map((member, index) => (
-                            <TeamCard key={index} member={member} index={index} />
-                        ))}
-                    </div>
-                </div>
             </div>
         </div>
     );
@@ -147,40 +129,4 @@ function ExpertiseRow({ title, description, tags }: { title: string, description
     );
 }
 
-function TeamCard({ member, index }: { member: { name: string; image: string }; index: number }) {
-    return (
-        <motion.div
-            className="group relative w-[200px]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-        >
-            <div className="aspect-[3/4] overflow-hidden rounded-lg bg-muted relative mb-4 border border-dashed border-border group-hover:border-solid group-hover:border-primary/50 transition-colors duration-500">
-                <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10 mix-blend-overlay" />
-                <motion.img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                    whileHover={{ scale: 1.05 }}
-                />
 
-                {/* Floating Badge */}
-                <div className="absolute bottom-2 left-2 z-20">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-background/90 backdrop-blur-sm border border-border text-[8px] font-bold uppercase tracking-widest text-primary shadow-sm">
-                        Founder
-                    </span>
-                </div>
-            </div>
-
-            <div className="flex justify-between items-end border-b border-dashed border-border pb-2 group-hover:border-primary/30 transition-colors">
-                <h3 className="text-lg font-heading font-bold uppercase text-foreground group-hover:text-primary transition-colors duration-300">
-                    {member.name}
-                </h3>
-                <span className="text-[10px] font-mono text-muted-foreground/50 group-hover:text-primary/50 transition-colors">
-                    0{index + 1}
-                </span>
-            </div>
-        </motion.div>
-    );
-}
