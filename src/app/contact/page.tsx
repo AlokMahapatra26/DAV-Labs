@@ -190,9 +190,9 @@ export default function ContactPage() {
                         icon={<Phone className="w-6 h-6" />}
                         title="Call Us"
                         description="Speak directly with our team"
-                        value="+918469159877"
+                        value="+91 73831 49649"
                         action="Call Now"
-                        href="tel:+918469159877"
+                        href="tel:+917383149649"
                     />
                     <ContactCard
                         icon={<Mail className="w-6 h-6" />}
@@ -206,9 +206,9 @@ export default function ContactPage() {
                         icon={<MessageCircle className="w-6 h-6" />}
                         title="WhatsApp"
                         description="Quick chat on WhatsApp"
-                        value="+918469159877"
+                        value="+91 73831 49649"
                         action="Chat Now"
-                        href="https://wa.me/+918469159877"
+                        href="https://wa.me/917383149649"
                     />
                 </div>
             </div>

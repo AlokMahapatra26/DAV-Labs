@@ -121,8 +121,6 @@ export function VerveFooter() {
                                     <IconPhone size={18} />
                                 </div>
                                 <div className="flex flex-col gap-1.5">
-                                    <a href="tel:+918469159877" className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium tracking-wide">+91 84691 59877</a>
-                                    <a href="tel:+918849561649" className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium tracking-wide">+91 88495 61649</a>
                                     <a href="tel:+917383149649" className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium tracking-wide">+91 73831 49649</a>
                                 </div>
                             </li>
@@ -154,14 +152,14 @@ export function VerveFooter() {
             {/* Floating Action Buttons */}
             <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
                 <a 
-                    href="tel:+918469159877" 
+                    href="tel:+917383149649" 
                     className="p-3.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
                     aria-label="Call Us"
                 >
                     <IconPhone size={24} className="group-hover:rotate-12 transition-transform" />
                 </a>
                 <a 
-                    href="https://wa.me/918469159877" 
+                    href="https://wa.me/917383149649" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="p-3.5 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
