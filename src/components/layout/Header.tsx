@@ -71,12 +71,19 @@ export function Header() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-dashed border-border">
+            <header className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md">
                 <div className="container mx-auto px-4 h-20 flex items-center justify-between">
                     <Link href="/" className="z-50 relative flex items-center gap-2">
-                        <span className="text-2xl font-heading font-bold uppercase tracking-tighter text-foreground">
-                            DAV<span className="text-primary">Labs</span>
-                        </span>
+                        <img
+                            src="/davlabs-logo-light.png"
+                            alt="DAV Labs Logo"
+                            className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105 block dark:hidden [filter:drop-shadow(0_1px_2px_rgba(0,0,0,0.1))]"
+                        />
+                        <img
+                            src="/davlabs-logo-dark.png"
+                            alt="DAV Labs Logo"
+                            className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105 hidden dark:block"
+                        />
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -88,7 +95,7 @@ export function Header() {
                     <div className="hidden md:flex items-center gap-4">
                         <ThemeToggle />
                         <Link href="/contact">
-                            <Button className="rounded-full bg-foreground text-background hover:bg-primary hover:text-white font-bold uppercase tracking-widest">
+                            <Button className="rounded-none bg-foreground text-background hover:bg-primary hover:text-white font-bold uppercase tracking-widest px-6 py-2.5">
                                 Let&apos;s Talk
                             </Button>
                         </Link>

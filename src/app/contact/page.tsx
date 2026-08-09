@@ -54,53 +54,36 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="min-h-screen bg-background pt-24 pb-12">
+        <div className="min-h-screen bg-background pt-12 md:pt-16 pb-12">
             <div className="container mx-auto px-4">
                 {/* Header Section */}
-                <div className="mb-12 border-b border-dashed border-border pb-8">
-                    <h1 className="text-3xl md:text-5xl font-heading font-medium uppercase text-foreground mb-4">
+                <div className="my-6 md:my-8 py-6 md:py-8 border-y border-dashed border-border/80">
+                    <h1 className="text-4xl md:text-6xl font-heading font-bold uppercase text-foreground mb-4 tracking-tight">
                         Let's <span className="text-primary">Talk</span>
                     </h1>
-                    <p className="text-xl text-muted-foreground max-w-2xl">
-                        Have a project in mind? We'd love to hear from you.
-                        Fill out the form or send us an email directly.
+                    <p className="text-base md:text-xl text-muted-foreground max-w-2xl font-light leading-relaxed">
+                        Have a project in mind or need expert technical consultation? We&apos;d love to hear from you. Fill out the form or reach out directly.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
                     {/* Contact Info */}
-                    <div className="space-y-12">
-                        <div className="group border-b border-dashed border-border pb-8">
-                            <h3 className="text-sm font-mono text-muted-foreground mb-2">EMAIL US</h3>
-                            <a href="mailto:contact@davlabs.in" className="flex items-center gap-4 text-2xl md:text-4xl font-heading font-bold text-foreground hover:text-primary transition-colors">
+                    <div className="space-y-8">
+                        <div className="group border-t border-dashed border-border/80 pt-8">
+                            <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-3">LET'S TALK</h3>
+                            <a href="mailto:contact@davlabs.in" className="flex items-center gap-3 text-2xl md:text-4xl font-heading font-bold text-foreground hover:text-primary transition-colors">
                                 contact@davlabs.in
-                                <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
+                                <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 text-primary opacity-70 group-hover:opacity-100 transition-opacity" />
                             </a>
-                        </div>
-
-                        { /*<div className="group border-b border-dashed border-border pb-8">
-                            <h3 className="text-sm font-mono text-muted-foreground mb-2">VISIT US</h3>
-                            <p className="text-xl md:text-2xl font-heading text-foreground leading-relaxed">
-                                123 Innovation Drive<br />
-                                Tech City, TC 90210
+                            <p className="mt-4 text-sm text-muted-foreground font-medium flex items-center gap-2">
+                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                                We typically respond within 2–4 business hours.
                             </p>
-                        </div>*/}
-
-                        {/*<div className="flex gap-4 pt-4">
-                            <div className="w-12 h-12 rounded-full border border-dashed border-border flex items-center justify-center hover:bg-primary hover:text-white hover:border-solid transition-all cursor-pointer">
-                                <Mail className="w-5 h-5" />
-                            </div>
-                            <div className="w-12 h-12 rounded-full border border-dashed border-border flex items-center justify-center hover:bg-primary hover:text-white hover:border-solid transition-all cursor-pointer">
-                                <MapPin className="w-5 h-5" />
-                            </div>
-                            <div className="w-12 h-12 rounded-full border border-dashed border-border flex items-center justify-center hover:bg-primary hover:text-white hover:border-solid transition-all cursor-pointer">
-                                <Phone className="w-5 h-5" />
-                            </div>
-                        </div>*/}
+                        </div>
                     </div>
 
                     {/* Contact Form */}
-                    <div className="bg-card border border-dashed border-border rounded-2xl p-8 md:p-10 relative overflow-hidden">
+                    <div className="bg-card border border-dashed border-border rounded-2xl p-6 md:p-8 relative overflow-hidden -mt-2 lg:-mt-10">
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-transparent" />
 
                         <form className="space-y-8" onSubmit={handleSubmit}>
@@ -169,7 +152,7 @@ export default function ContactPage() {
                             <Button
                                 type="submit"
                                 disabled={loading || !turnstileToken}
-                                className="w-full md:w-auto px-10 py-6 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-widest text-sm transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full md:w-auto px-10 py-6 rounded-none bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-widest text-sm transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {loading ? (
                                     <>

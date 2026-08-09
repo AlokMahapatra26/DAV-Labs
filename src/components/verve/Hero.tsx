@@ -25,7 +25,7 @@ export function VerveHero() {
 
                         <div className="flex flex-col sm:flex-row gap-6 w-full justify-center lg:justify-start">
                             <Link href="/contact">
-                                <Button className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-sm px-8 py-6 uppercase tracking-widest transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/25">
+                                <Button className="rounded-none bg-primary text-primary-foreground hover:bg-primary/85 font-bold text-sm px-8 py-6 uppercase tracking-widest transition-colors duration-300 shadow-md">
                                     Start A Project
                                 </Button>
                             </Link>

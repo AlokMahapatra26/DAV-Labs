@@ -83,11 +83,11 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         >
             {/* Image Section */}
             <div className="h-1/2 w-full relative overflow-hidden">
-                <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 z-10" />
                 <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-110"
                 />
                 <motion.div
                     className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm border border-dashed border-border flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300"
@@ -106,7 +106,6 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
                         <span className="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 rounded border border-primary/20">
                             {service.category}
                         </span>
-                        <span className="text-xs font-mono text-muted-foreground/40">{service.id}</span>
                     </div>
                     <h3 className="text-xl font-heading font-medium uppercase text-foreground mb-1 group-hover:text-primary transition-colors duration-300 leading-tight">
                         {service.title}
@@ -120,3 +119,4 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         </motion.div>
     );
 }
+

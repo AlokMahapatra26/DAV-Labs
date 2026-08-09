@@ -88,7 +88,7 @@ export default function AgencyPage() {
                         <div className="h-px flex-1 bg-border border-t border-dashed border-border" />
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-12 md:gap-20">
+                    <div className="flex flex-wrap justify-center gap-16 md:gap-28 lg:gap-36">
                         {[
                             { name: "Deep", image: "/assets/deep.jpeg" },
                             { name: "Alok", image: "/assets/alok.jpg" },
@@ -173,13 +173,10 @@ function TeamCard({ member, index }: { member: { name: string; image: string }; 
                 </div>
             </div>
 
-            <div className="flex justify-between items-end border-b border-dashed border-border pb-2 group-hover:border-primary/30 transition-colors">
+            <div className="border-b border-dashed border-border pb-2 group-hover:border-primary/30 transition-colors text-center">
                 <h3 className="text-lg font-heading font-bold uppercase text-foreground group-hover:text-primary transition-colors duration-300">
                     {member.name}
                 </h3>
-                <span className="text-[10px] font-mono text-muted-foreground/50 group-hover:text-primary/50 transition-colors">
-                    0{index + 1}
-                </span>
             </div>
         </motion.div>
     );

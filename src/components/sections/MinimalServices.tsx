@@ -34,7 +34,6 @@ export function MinimalServices() {
                             {services.map((service) => (
                                 <div key={service.id} className="group border-t border-border py-10 flex flex-col md:flex-row justify-between items-start md:items-center transition-colors hover:bg-muted/30 px-4 -mx-4">
                                     <div className="flex items-baseline gap-4 mb-4 md:mb-0">
-                                        <span className="text-xs font-mono text-muted-foreground">{service.id}</span>
                                         <h3 className="text-3xl font-heading font-medium">{service.title}</h3>
                                     </div>
                                     <p className="text-agency-sm text-muted-foreground max-w-xs text-right">

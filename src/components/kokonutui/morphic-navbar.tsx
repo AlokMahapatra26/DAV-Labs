@@ -82,6 +82,19 @@ const megaMenuItems = [
     ]
   },
   {
+    title: "Business Registration",
+    links: [
+      "GST Registration",
+      "MSME/Udyam",
+      "IEC",
+      "Company Registration",
+      "Trademark",
+      "PAN/TAN",
+      "DSC",
+      "Professional Tax",
+    ]
+  },
+  {
     title: "Servers & Others",
     links: [
       "Web Hosting",
@@ -109,7 +122,7 @@ export function MorphicNavbar() {
     <nav className="mx-auto max-w-fit px-4 py-2 relative z-[60]">
       <div className="flex items-center justify-center">
         {/* Removed overflow-hidden so the dropdown can overflow out of the navbar */}
-        <div className="flex items-center justify-between rounded-full border border-border bg-background/80 backdrop-blur-md p-1">
+        <div className="flex items-center justify-between rounded-none bg-background/80 backdrop-blur-md p-1 shadow-sm">
           {navItems.map((item) => {
             const isActive = isActiveLink(item.path);
 
@@ -124,8 +137,8 @@ export function MorphicNavbar() {
                   className={clsx(
                     "flex items-center gap-1.5 justify-center px-4 py-2 text-xs font-medium uppercase tracking-wider transition-all duration-300",
                     isActive
-                      ? "bg-primary text-primary-foreground rounded-full shadow-sm"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-full"
+                      ? "bg-primary text-primary-foreground rounded-none shadow-sm"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-none"
                   )}
                   href={item.path}
                 >
@@ -137,14 +150,14 @@ export function MorphicNavbar() {
                 {item.hasMegaMenu && (
                   <div 
                     className={clsx(
-                      "absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[95vw] md:w-[900px] transition-all duration-300 origin-top",
+                      "absolute top-full left-1/2 -translate-x-[32%] pt-6 w-[95vw] md:w-[1100px] max-w-[92vw] transition-all duration-300 origin-top",
                       hoveredMenu === item.path 
                         ? "opacity-100 visible translate-y-0" 
                         : "opacity-0 invisible translate-y-2 pointer-events-none"
                     )}
                   >
-                    <div className="bg-background border border-border shadow-2xl rounded-2xl p-8 cursor-default">
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div className="bg-background border border-border shadow-2xl rounded-2xl p-7 cursor-default">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
                         {megaMenuItems.map((column, idx) => (
                           <div key={idx} className="flex flex-col">
                             <h3 className="text-primary font-bold uppercase tracking-wider mb-5 border-b border-border/50 pb-2 text-sm">

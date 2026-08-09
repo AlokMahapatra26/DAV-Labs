@@ -20,7 +20,7 @@ export function VerveAbout() {
 
                     <Link
                         href="/agency"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300 group"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-none bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300 group"
                     >
                         Discover Our Agency
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />

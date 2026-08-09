@@ -21,15 +21,19 @@ export function Navbar() {
 
   return (
     <div className="fixed top-4 inset-x-0 max-w-2xl mx-auto z-50 px-4">
-      <div className="relative rounded-full border border-zinc-200/50 dark:border-white/10 bg-white/80 dark:bg-black/50 backdrop-blur-md shadow-lg dark:shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] px-8 py-4 flex items-center justify-between">
-
+      <div className="relative rounded-none bg-white/80 dark:bg-black/50 backdrop-blur-md shadow-lg px-8 py-4 flex items-center justify-between">
+ 
         {/* Logo */}
         <Link href="/" className="text-zinc-900 dark:text-white font-heading font-bold text-xl tracking-wider cursor-pointer z-50">
           <img
-            src="/assets/logo.png"
+            src="/davlabs-logo-light.png"
             alt="DAV Labs Logo"
-            width={100}
-            height={40}
+            className="h-9 w-auto object-contain block dark:hidden [filter:drop-shadow(0_1px_2px_rgba(0,0,0,0.1))]"
+          />
+          <img
+            src="/davlabs-logo-dark.png"
+            alt="DAV Labs Logo"
+            className="h-9 w-auto object-contain hidden dark:block"
           />
         </Link>
 
@@ -54,7 +58,7 @@ export function Navbar() {
                   <AnimatePresence>
                     {hoveredIndex === index && (
                       <motion.span
-                        className="absolute inset-0 rounded-full bg-zinc-100 dark:bg-zinc-800/80 -z-10"
+                        className="absolute inset-0 rounded-none bg-zinc-100 dark:bg-zinc-800/80 -z-10"
                         layoutId="hoverBackground" // This is the magic key for sliding
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1, transition: { duration: 0.15 } }}

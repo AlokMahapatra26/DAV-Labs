@@ -42,7 +42,8 @@ export function VerveFooter() {
                 {/* Top Section: Logo & Socials */}
                 <div className="flex flex-col md:flex-row justify-between items-center border-b border-border/50 pb-8 mb-12 gap-6">
                     <div className="flex items-center">
-                        <img src="/logo.png" alt="DAV Labs" className="h-10 w-auto object-contain" />
+                        <img src="/davlabs-logo-light.png" alt="DAV Labs" className="h-10 w-auto object-contain block dark:hidden [filter:drop-shadow(0_1px_2px_rgba(0,0,0,0.1))]" />
+                        <img src="/davlabs-logo-dark.png" alt="DAV Labs" className="h-10 w-auto object-contain hidden dark:block" />
                     </div>
                     <div className="flex items-center gap-4">
                         <span className="font-semibold text-lg text-foreground/90">Follow on social media:</span>

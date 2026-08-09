@@ -44,8 +44,6 @@ export default function RootLayout({
           </main>
           <VerveFooter />
           <Toaster position="top-center" />
-          {/* <Footer /> */}
-          {/* Footer is now part of page content in this design or we can add VerveFooter here if we want it global */}
         </ThemeProvider>
       </body>
     </html>

@@ -2,9 +2,106 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Code2, BarChart3, Palette, ArrowRight, Server, ChevronRight } from "lucide-react";
+import { 
+    Code2, 
+    BarChart3, 
+    Palette, 
+    ArrowRight, 
+    Server, 
+    ChevronRight, 
+    Building2,
+    Bell,
+    CreditCard,
+    BookOpen,
+    Briefcase,
+    ShieldCheck,
+    FileText,
+    Award,
+    Sparkles,
+    CheckCircle2,
+    TrendingUp,
+    Globe,
+    Zap,
+    ShoppingCart,
+    Layout,
+    Wrench,
+    Smartphone,
+    Database,
+    Search,
+    Target,
+    Share2,
+    Megaphone,
+    Camera,
+    PenTool,
+    Image as ImageIcon,
+    Video,
+    Receipt,
+    Lock,
+    Mail,
+    KeyRound,
+    Calculator,
+    MousePointerClick,
+    HardDrive,
+    BadgeCheck
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
+
+function getServiceDetails(serviceName: string, catIdx: number, idx: number) {
+    const s = serviceName.toLowerCase();
+    
+    const defaultGradients = [
+        "from-amber-500 to-orange-600",
+        "from-purple-500 to-fuchsia-600",
+        "from-cyan-500 to-blue-600",
+        "from-emerald-400 to-teal-600",
+        "from-rose-500 to-red-600",
+        "from-indigo-500 to-violet-600",
+        "from-yellow-400 to-amber-500",
+        "from-pink-500 to-rose-600",
+    ];
+    const defaultBg = defaultGradients[(catIdx * 3 + idx) % defaultGradients.length];
+
+    if (s.includes("designing") || s.includes("ui/ux")) return { Icon: Layout, bg: "from-purple-500 to-fuchsia-600" };
+    if (s.includes("development") && !s.includes("app")) return { Icon: Code2, bg: "from-amber-500 to-orange-600" };
+    if (s.includes("speed")) return { Icon: Zap, bg: "from-yellow-400 to-amber-500" };
+    if (s.includes("commerce") || s.includes("shopify")) return { Icon: ShoppingCart, bg: "from-emerald-400 to-teal-600" };
+    if (s.includes("maintenance")) return { Icon: Wrench, bg: "from-indigo-500 to-violet-600" };
+    if (s.includes("app")) return { Icon: Smartphone, bg: "from-cyan-500 to-blue-600" };
+    if (s.includes("erp") || s.includes("custom software")) return { Icon: Database, bg: "from-rose-500 to-red-600" };
+    
+    if (s.includes("seo") || s.includes("search engine optimization")) return { Icon: Search, bg: "from-emerald-400 to-teal-600" };
+    if (s.includes("sem") || (s.includes("marketing") && s.includes("search"))) return { Icon: Target, bg: "from-amber-500 to-orange-600" };
+    if (s.includes("optimization")) return { Icon: TrendingUp, bg: "from-cyan-400 to-teal-500" };
+    if (s.includes("social")) return { Icon: Share2, bg: "from-purple-500 to-fuchsia-600" };
+    if (s.includes("branding")) return { Icon: Award, bg: "from-indigo-500 to-violet-600" };
+    if (s.includes("instagram")) return { Icon: Camera, bg: "from-pink-500 to-rose-600" };
+    if (s.includes("facebook") || s.includes("ads")) return { Icon: Megaphone, bg: "from-blue-500 to-indigo-600" };
+    if (s.includes("linkedin")) return { Icon: Briefcase, bg: "from-sky-500 to-blue-600" };
+    
+    if (s.includes("brochure") || s.includes("catalog")) return { Icon: BookOpen, bg: "from-amber-500 to-orange-600" };
+    if (s.includes("logo")) return { Icon: PenTool, bg: "from-purple-500 to-fuchsia-600" };
+    if (s.includes("banner") || s.includes("image")) return { Icon: ImageIcon, bg: "from-cyan-500 to-blue-600" };
+    if (s.includes("video")) return { Icon: Video, bg: "from-rose-500 to-red-600" };
+    if (s.includes("writing") || s.includes("content")) return { Icon: FileText, bg: "from-emerald-400 to-teal-600" };
+    if (s.includes("google") || s.includes("ppc")) return { Icon: MousePointerClick, bg: "from-yellow-400 to-amber-500" };
+    
+    if (s.includes("gst")) return { Icon: Receipt, bg: "from-amber-500 to-orange-600" };
+    if (s.includes("msme") || s.includes("udyam")) return { Icon: Building2, bg: "from-emerald-400 to-teal-600" };
+    if (s.includes("iec")) return { Icon: Globe, bg: "from-cyan-500 to-blue-600" };
+    if (s.includes("company")) return { Icon: Building2, bg: "from-indigo-500 to-violet-600" };
+    if (s.includes("trademark")) return { Icon: BadgeCheck, bg: "from-purple-500 to-fuchsia-600" };
+    if (s.includes("pan") || s.includes("tan")) return { Icon: CreditCard, bg: "from-yellow-400 to-amber-500" };
+    if (s.includes("dsc")) return { Icon: KeyRound, bg: "from-rose-500 to-red-600" };
+    if (s.includes("tax")) return { Icon: Calculator, bg: "from-pink-500 to-rose-600" };
+    
+    if (s.includes("hosting")) return { Icon: HardDrive, bg: "from-cyan-500 to-blue-600" };
+    if (s.includes("domain")) return { Icon: Globe, bg: "from-indigo-500 to-violet-600" };
+    if (s.includes("ssl")) return { Icon: Lock, bg: "from-emerald-400 to-teal-600" };
+    if (s.includes("email")) return { Icon: Mail, bg: "from-purple-500 to-fuchsia-600" };
+
+    return { Icon: Sparkles, bg: defaultBg };
+}
 
 const serviceCategories = [
     {
@@ -52,6 +149,21 @@ const serviceCategories = [
             "Corporate Video Shooting",
             "Content Writing",
             "Google Ads/ PPC",
+        ]
+    },
+    {
+        title: "Business Registration Services",
+        description: "Comprehensive registration, compliance, and legal identity solutions to seamlessly launch and scale your business.",
+        icon: <Building2 className="w-8 h-8" />,
+        services: [
+            "GST Registration",
+            "MSME/Udyam",
+            "IEC",
+            "Company Registration",
+            "Trademark",
+            "PAN/TAN",
+            "DSC",
+            "Professional Tax",
         ]
     },
     {
@@ -143,36 +255,35 @@ export default function ServicesPage() {
                                 </div>
                             </div>
 
-                            {/* Service Cards Grid */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            {/* Service Cards Grid - Matching Reference Style */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                                 {category.services.map((service, idx) => {
                                     const serviceId = service.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                                    const { Icon: CornerIcon, bg } = getServiceDetails(service, catIdx, idx);
+
                                     return (
-                                        <div 
+                                        <Link 
                                             key={idx} 
                                             id={serviceId}
-                                            className="group bg-card border border-border/60 rounded-2xl p-6 hover:shadow-xl hover:shadow-primary/5 hover:border-primary/40 transition-all duration-300 flex flex-col justify-between h-full scroll-mt-32"
+                                            href="/contact"
+                                            className="group relative bg-card border border-border/60 rounded-2xl md:rounded-3xl p-6 md:p-8 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[220px] scroll-mt-32 overflow-hidden cursor-pointer"
                                         >
-                                            <div>
-                                                <div className="mb-4">
-                                                    <ChevronRight className="w-6 h-6 text-primary/40 group-hover:text-primary transition-colors" />
-                                                </div>
-                                                <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors leading-tight">
+                                            <div className="z-10">
+                                                <h3 className="text-xl font-heading font-bold text-foreground mb-3 group-hover:text-primary transition-colors leading-snug pr-4">
                                                     {service}
                                                 </h3>
-                                                <p className="text-sm text-muted-foreground mb-8 leading-relaxed">
-                                                    Expert {service.toLowerCase()} services tailored to drive measurable results and operational excellence for your brand.
+                                                <p className="text-sm text-muted-foreground leading-relaxed font-normal mb-6">
+                                                    Expert {service.toLowerCase()} solutions tailored to drive measurable results and operational excellence for your brand.
                                                 </p>
                                             </div>
-                                            
-                                            <Link 
-                                                href="/contact" 
-                                                className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors gap-2 mt-auto"
-                                            >
-                                                Know More 
-                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-                                            </Link>
-                                        </div>
+
+                                            {/* Bottom-Right Triangular Ribbon Corner Badge */}
+                                            <div className="absolute bottom-0 right-0 w-14 h-14 md:w-16 md:h-16 overflow-hidden rounded-br-2xl md:rounded-br-3xl pointer-events-none z-10">
+                                                <div className={`w-full h-full bg-gradient-to-tl ${bg} flex items-end justify-end p-2.5 [clip-path:polygon(100%_0,0_100%,100%_100%)] shadow-sm transition-transform duration-300 group-hover:scale-110`}>
+                                                    <CornerIcon className="w-4 h-4 md:w-4.5 md:h-4.5 text-white z-20" />
+                                                </div>
+                                            </div>
+                                        </Link>
                                     );
                                 })}
                             </div>
@@ -196,7 +307,7 @@ export default function ServicesPage() {
                             The market is crowded. To win, you need a partner who cares as much about your success as you do. Let's build something extraordinary together.
                         </p>
                         <Link href="/contact">
-                            <Button size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold uppercase tracking-widest px-10 py-6 text-sm transition-all duration-300 hover:scale-105 shadow-xl shadow-primary/20">
+                            <Button size="lg" className="rounded-none bg-primary text-primary-foreground hover:bg-primary/90 font-bold uppercase tracking-widest px-10 py-6 text-sm transition-all duration-300 hover:scale-105 shadow-xl shadow-primary/20">
                                 Get a Free Consultation
                             </Button>
                         </Link>
