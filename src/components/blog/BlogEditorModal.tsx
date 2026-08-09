@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Sparkles, Image as ImageIcon, Eye, Edit3, Save, Check } from "lucide-react";
+import { X, Image as ImageIcon, Eye, Edit3, Save, Check } from "lucide-react";
 import { QuillEditor } from "./QuillEditor";
 import { BlogPost, generateSlug } from "@/lib/blog-store";
 import { toast } from "sonner";
@@ -124,18 +124,13 @@ export function BlogEditorModal({ isOpen, onClose, initialPost, onSave }: BlogEd
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-border/80 bg-muted/20">
-                            <div className="flex items-center gap-3">
-                                <div className="p-2 rounded-xl bg-primary/10 text-primary">
-                                    <Sparkles className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <h2 className="text-xl font-heading font-bold uppercase tracking-tight">
-                                        {initialPost ? "Edit Blog Post" : "Create New Blog Post"}
-                                    </h2>
-                                    <p className="text-xs text-muted-foreground">
-                                        Powered by React Quill Rich Text Editor
-                                    </p>
-                                </div>
+                            <div>
+                                <h2 className="text-xl font-heading font-bold uppercase tracking-tight">
+                                    {initialPost ? "Edit Blog Post" : "Create New Blog Post"}
+                                </h2>
+                                <p className="text-xs text-muted-foreground">
+                                    Powered by React Quill Rich Text Editor
+                                </p>
                             </div>
 
                             <div className="flex items-center gap-2">

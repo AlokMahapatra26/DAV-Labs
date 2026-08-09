@@ -106,10 +106,6 @@ export default function BlogPage() {
             {/* Header Section */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-border/60 pb-8">
                 <div>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-bold uppercase tracking-widest text-primary mb-4">
-                        <Sparkles className="w-3.5 h-3.5" />
-                        <span>DAV Labs Journal</span>
-                    </div>
                     <h1 className="text-4xl md:text-6xl font-heading font-bold uppercase tracking-tight">
                         Insights & <span className="text-primary">Articles</span>
                     </h1>
@@ -156,15 +152,15 @@ export default function BlogPage() {
             {/* Filter & Search Bar */}
             <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-10">
                 {/* Categories */}
-                <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+                <div className="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
                     {categories.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setSelectedCategory(cat)}
-                            className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shrink-0 border ${
+                            className={`px-2 py-1 text-xs font-bold uppercase tracking-wider transition-all shrink-0 bg-transparent ${
                                 selectedCategory === cat
-                                    ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
-                                    : "bg-card border-border/80 text-muted-foreground hover:text-foreground hover:border-border"
+                                    ? "text-black dark:text-white underline underline-offset-4 decoration-2 decoration-primary"
+                                    : "text-muted-foreground hover:text-black dark:hover:text-white"
                             }`}
                         >
                             {cat}
@@ -180,7 +176,7 @@ export default function BlogPage() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search articles..."
-                        className="w-full pl-10 pr-4 py-2 bg-card border border-border/80 rounded-xl text-xs focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        className="w-full pl-10 pr-4 py-2 bg-transparent border border-border/80 rounded-xl text-xs focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-black dark:text-white"
                     />
                 </div>
             </div>
@@ -202,17 +198,17 @@ export default function BlogPage() {
                     )}
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredPosts.map((post, idx) => (
                         <motion.div
                             key={post.slug}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.05 }}
-                            className="group relative bg-card border border-border/80 hover:border-primary/50 rounded-3xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:shadow-primary/5"
+                            className="group relative bg-card border border-border/80 hover:border-primary/50 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                         >
                             {/* Card Image */}
-                            <div className="relative h-52 w-full overflow-hidden bg-muted">
+                            <div className="relative h-44 w-full overflow-hidden bg-muted">
                                 {post.coverImage ? (
                                     /* eslint-disable-next-next/no-img-element */
                                     <img
@@ -222,76 +218,76 @@ export default function BlogPage() {
                                     />
                                 ) : (
                                     <div className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/5 to-muted flex items-center justify-center">
-                                        <Sparkles className="w-10 h-10 text-primary/40" />
+                                        <Sparkles className="w-8 h-8 text-primary/40" />
                                     </div>
                                 )}
 
                                 {/* Category Tag */}
-                                <div className="absolute top-4 left-4">
-                                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-bold uppercase tracking-widest text-primary">
+                                <div className="absolute top-3 left-3">
+                                    <span className="text-[10px] font-bold uppercase tracking-widest text-black dark:text-white drop-shadow-md">
                                         {post.category}
                                     </span>
                                 </div>
 
                                 {/* Admin Floating Overlay Controls */}
                                 {isAdmin && (
-                                    <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/70 backdrop-blur-md p-1.5 rounded-xl border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/70 backdrop-blur-md p-1 rounded-xl border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
                                         <button
                                             onClick={(e) => handleEdit(post, e)}
                                             title="Edit Post"
                                             className="p-1.5 hover:bg-white/20 rounded-lg text-white transition-colors"
                                         >
-                                            <Edit3 className="w-4 h-4" />
+                                            <Edit3 className="w-3.5 h-3.5" />
                                         </button>
                                         <button
                                             onClick={(e) => handleDelete(post.slug, post.title, e)}
                                             title="Delete Post"
                                             className="p-1.5 hover:bg-destructive/80 rounded-lg text-destructive-foreground transition-colors"
                                         >
-                                            <Trash2 className="w-4 h-4" />
+                                            <Trash2 className="w-3.5 h-3.5" />
                                         </button>
                                     </div>
                                 )}
                             </div>
 
                             {/* Card Content */}
-                            <div className="p-6 flex-1 flex flex-col justify-between">
+                            <div className="p-5 flex-1 flex flex-col justify-between">
                                 <div>
                                     {/* Meta Row */}
-                                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3 font-mono">
+                                    <div className="flex items-center gap-3 text-[11px] text-muted-foreground mb-2.5 font-mono">
                                         <span className="flex items-center gap-1">
-                                            <Calendar className="w-3.5 h-3.5 text-primary" />
+                                            <Calendar className="w-3 h-3 text-primary" />
                                             {post.date}
                                         </span>
                                         <span>•</span>
                                         <span className="flex items-center gap-1">
-                                            <Clock className="w-3.5 h-3.5 text-primary" />
+                                            <Clock className="w-3 h-3 text-primary" />
                                             {post.readTime || "4 min read"}
                                         </span>
                                     </div>
 
                                     {/* Title */}
                                     <Link href={`/blog/${post.slug}`} className="block group-hover:text-primary transition-colors">
-                                        <h2 className="text-xl font-heading font-bold uppercase line-clamp-2 mb-3 leading-snug">
+                                        <h2 className="text-lg font-heading font-bold uppercase line-clamp-2 mb-2 leading-snug">
                                             {post.title}
                                         </h2>
                                     </Link>
 
                                     {/* Excerpt */}
-                                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-6">
+                                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2 mb-4">
                                         {post.excerpt}
                                     </p>
                                 </div>
 
                                 {/* Read Article Link */}
-                                <div className="pt-4 border-t border-border/50 flex items-center justify-between">
-                                    <span className="text-xs text-muted-foreground font-medium">By {post.author || "DAV Labs"}</span>
+                                <div className="pt-3 border-t border-border/50 flex items-center justify-between">
+                                    <span className="text-[11px] text-muted-foreground font-medium">By {post.author || "DAV Labs"}</span>
                                     <Link
                                         href={`/blog/${post.slug}`}
-                                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary group-hover:translate-x-1 transition-transform"
+                                        className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-primary group-hover:translate-x-1 transition-transform"
                                     >
                                         Read Article
-                                        <ArrowUpRight className="w-4 h-4" />
+                                        <ArrowUpRight className="w-3.5 h-3.5" />
                                     </Link>
                                 </div>
                             </div>

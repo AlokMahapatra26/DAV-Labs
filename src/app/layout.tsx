@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { FluidCursor } from "@/components/ui/FluidCursor";
+import { GraphPaperBackground } from "@/components/ui/GraphPaperBackground";
 import SmoothScroll from "@/components/utils/SmoothScroll";
 import { ThemeProvider } from "@/components/context/ThemeProvider";
 import { Header } from "@/components/layout/Header";
@@ -37,6 +38,7 @@ export default function RootLayout({
         <ThemeProvider>
           <SmoothScroll />
           {/* <GrainTexture /> */}
+          <GraphPaperBackground />
           <FluidCursor />
           <Header />
           <main className="min-h-screen">

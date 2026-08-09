@@ -70,13 +70,12 @@ export default function ContactPage() {
                     {/* Contact Info */}
                     <div className="space-y-8">
                         <div className="group border-t border-dashed border-border/80 pt-8">
-                            <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-3">LET'S TALK</h3>
+                            <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-3">MAIL US</h3>
                             <a href="mailto:contact@davlabs.in" className="flex items-center gap-3 text-2xl md:text-4xl font-heading font-bold text-foreground hover:text-primary transition-colors">
                                 contact@davlabs.in
                                 <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 text-primary opacity-70 group-hover:opacity-100 transition-opacity" />
                             </a>
-                            <p className="mt-4 text-sm text-muted-foreground font-medium flex items-center gap-2">
-                                <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <p className="mt-4 text-sm text-muted-foreground font-medium">
                                 We typically respond within 2–4 business hours.
                             </p>
                         </div>
