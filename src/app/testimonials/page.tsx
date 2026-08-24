@@ -1,37 +1,57 @@
-import { Construction, Quote } from "lucide-react";
+"use client";
+
+import React from "react";
+import { ClientReelReview } from "@/components/stories/ClientReelReview";
+import { useStoriesStore } from "@/lib/stories-store";
+import { Film } from "lucide-react";
 
 export default function TestimonialsPage() {
+    const { stories, activeStory, setActiveStoryId } = useStoriesStore();
+
     return (
-        <div className="min-h-screen bg-background flex flex-col items-center justify-center relative overflow-hidden pt-20">
-            {/* Background Decoration */}
-            <div className="absolute inset-0 w-full h-full">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[128px]" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[128px]" />
-            </div>
-
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="max-w-3xl mx-auto text-center">
-                    <div className="mb-8 flex justify-center">
-                        <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-dashed border-primary/30 flex items-center justify-center rotate-3">
-                            <Quote className="w-10 h-10 text-primary" />
-                        </div>
+        <div className="min-h-screen bg-background pt-24 pb-16">
+            
+            {/* If multiple client stories exist, render sleek story pills selector (without Admin UI) */}
+            {stories.length > 1 && (
+                <div className="container mx-auto px-4 md:px-6 mb-4">
+                    <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-center">
+                        {stories.map((story) => {
+                            const isActive = story.id === activeStory.id;
+                            return (
+                                <button
+                                    key={story.id}
+                                    onClick={() => setActiveStoryId(story.id)}
+                                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap flex items-center gap-2 ${
+                                        isActive
+                                            ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
+                                            : "bg-muted/40 border border-border hover:bg-muted text-muted-foreground hover:text-foreground"
+                                    }`}
+                                >
+                                    <span className={`w-2 h-2 rounded-full ${isActive ? "bg-white animate-pulse" : "bg-primary/40"}`} />
+                                    {story.clientName}
+                                </button>
+                            );
+                        })}
                     </div>
-
-                    <h1 className="text-3xl md:text-5xl font-heading font-medium uppercase mb-4 tracking-tight">
-                        Client <span className="text-primary">Stories</span>
-                    </h1>
-
-                    <div className="h-px w-24 bg-gradient-to-r from-transparent via-border to-transparent mx-auto mb-8" />
-
-                    <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mb-4">
-                        We are currently curating a collection of our most impactful success stories.
-                    </p>
-
-                    <p className="text-sm font-mono text-primary/60 uppercase tracking-[0.2em] animate-pulse">
-                        Coming Soon
-                    </p>
                 </div>
-            </div>
+            )}
+
+            {/* Active Selected Client Reel Review */}
+            {activeStory && (
+                <ClientReelReview
+                    reelUrl={activeStory.reelUrl}
+                    reelId={activeStory.reelId}
+                    clientName={activeStory.clientName}
+                    clientRole={activeStory.clientRole}
+                    companyName={activeStory.companyName}
+                    projectTitle={activeStory.projectTitle}
+                    projectCategory={activeStory.projectCategory}
+                    liveWebsiteUrl={activeStory.liveWebsiteUrl}
+                    quote={activeStory.quote}
+                    logoUrl={activeStory.logoUrl}
+                    aboutLink={`/work/${activeStory.slug}`}
+                />
+            )}
         </div>
     );
 }

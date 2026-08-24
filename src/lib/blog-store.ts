@@ -15,9 +15,9 @@ export interface BlogPost {
     readTime?: string;
 }
 
-const STORAGE_KEY = "dav_labs_blog_posts_v1";
+const STORAGE_KEY = "dav_labs_blog_posts_v2";
 const ADMIN_AUTH_KEY = "dav_labs_admin_auth_v1";
-const ADMIN_PASSWORD = "admin123";
+const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "DAV@11223344";
 
 // Helper to estimate reading time
 export function calculateReadTime(content: string): string {

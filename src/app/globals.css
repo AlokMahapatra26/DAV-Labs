@@ -113,9 +113,7 @@ html {
 }
 
 .quill-editor-wrapper .ql-editor {
-  min-height: 280px;
-  max-height: 500px;
-  overflow-y: auto;
+  min-height: 320px;
   padding: 16px 20px;
   color: hsl(var(--foreground));
 }

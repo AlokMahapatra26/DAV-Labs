@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, KeyRound, X, CheckCircle2, ShieldAlert } from "lucide-react";
+import { Lock, KeyRound, X, CheckCircle2, ShieldAlert, Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
 
 interface AdminLoginModalProps {
@@ -13,6 +13,7 @@ interface AdminLoginModalProps {
 
 export function AdminLoginModal({ isOpen, onClose, onLogin }: AdminLoginModalProps) {
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -28,11 +29,19 @@ export function AdminLoginModal({ isOpen, onClose, onLogin }: AdminLoginModalPro
         if (success) {
             toast.success("Admin mode unlocked successfully!");
             setPassword("");
+            setShowPassword(false);
             onClose();
         } else {
             setError(true);
-            toast.error("Incorrect Admin password. (Default: admin123)");
+            toast.error("Incorrect Admin password.");
         }
+    };
+
+    const handleModalClose = () => {
+        setPassword("");
+        setShowPassword(false);
+        setError(false);
+        onClose();
     };
 
     return (
@@ -44,7 +53,7 @@ export function AdminLoginModal({ isOpen, onClose, onLogin }: AdminLoginModalPro
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        onClick={onClose}
+                        onClick={handleModalClose}
                         className="absolute inset-0 bg-black/60 backdrop-blur-md"
                     />
 
@@ -53,11 +62,11 @@ export function AdminLoginModal({ isOpen, onClose, onLogin }: AdminLoginModalPro
                         initial={{ scale: 0.95, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                        className="relative w-full max-w-md bg-card border border-border/80 rounded-2xl shadow-2xl overflow-hidden z-10 p-6 md:p-8"
+                        className="relative w-full max-w-md bg-card border border-border/80 rounded-2xl overflow-hidden z-10 p-6 md:p-8"
                     >
                         {/* Close button */}
                         <button
-                            onClick={onClose}
+                            onClick={handleModalClose}
                             className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground rounded-full hover:bg-muted/50 transition-colors"
                         >
                             <X className="w-5 h-5" />
@@ -78,48 +87,55 @@ export function AdminLoginModal({ isOpen, onClose, onLogin }: AdminLoginModalPro
                                 <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
                                     Admin Password
                                 </label>
-                                <div className="relative">
-                                    <KeyRound className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                                <div className="relative flex items-center">
+                                    <KeyRound className="w-5 h-5 absolute left-3.5 text-muted-foreground pointer-events-none" />
                                     <input
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         value={password}
                                         onChange={(e) => {
                                             setPassword(e.target.value);
                                             if (error) setError(false);
                                         }}
                                         placeholder="Enter passcode..."
-                                        className={`w-full pl-11 pr-4 py-3 bg-muted/30 border rounded-xl outline-none transition-all ${
+                                        className={`w-full pl-11 pr-11 py-3 bg-muted/30 border rounded-xl outline-none transition-all ${
                                             error
                                                 ? "border-destructive focus:ring-1 focus:ring-destructive"
                                                 : "border-border/80 focus:border-primary focus:ring-1 focus:ring-primary"
                                         }`}
                                         autoFocus
                                     />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute right-3.5 p-1 text-muted-foreground hover:text-foreground transition-colors rounded-lg focus:outline-none"
+                                        title={showPassword ? "Hide password" : "Show password"}
+                                    >
+                                        {showPassword ? (
+                                            <EyeOff className="w-4 h-4" />
+                                        ) : (
+                                            <Eye className="w-4 h-4" />
+                                        )}
+                                    </button>
                                 </div>
                                 {error && (
                                     <div className="flex items-center gap-1.5 text-destructive text-xs mt-2">
                                         <ShieldAlert className="w-3.5 h-3.5" />
-                                        <span>Invalid passcode. Default password is <code className="bg-destructive/10 px-1 rounded font-mono">admin123</code></span>
+                                        <span>Invalid passcode. Please try again.</span>
                                     </div>
                                 )}
-                            </div>
-
-                            <div className="p-3 rounded-xl bg-primary/5 border border-primary/10 text-xs text-muted-foreground">
-                                <span className="font-semibold text-primary">Default Admin Password: </span>
-                                <code className="font-mono bg-primary/10 text-primary px-1.5 py-0.5 rounded">admin123</code>
                             </div>
 
                             <div className="flex gap-3 pt-2">
                                 <button
                                     type="button"
-                                    onClick={onClose}
+                                    onClick={handleModalClose}
                                     className="flex-1 py-3 border border-border/80 hover:bg-muted/50 rounded-xl font-medium text-sm transition-colors"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     type="submit"
-                                    className="flex-1 py-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl font-medium text-sm transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+                                    className="flex-1 py-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2"
                                 >
                                     <CheckCircle2 className="w-4 h-4" />
                                     Unlock Admin
@@ -132,3 +148,4 @@ export function AdminLoginModal({ isOpen, onClose, onLogin }: AdminLoginModalPro
         </AnimatePresence>
     );
 }
+

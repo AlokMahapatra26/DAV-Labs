@@ -1,21 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, Edit3, Trash2, Tag, Lock, Plus, Share2, Check } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Share2, Check } from "lucide-react";
 import { useBlogStore, BlogPost } from "@/lib/blog-store";
-import { BlogEditorModal } from "@/components/blog/BlogEditorModal";
 import { toast } from "sonner";
 
 export default function BlogPostDetail() {
     const params = useParams();
-    const router = useRouter();
     const slug = params?.slug as string;
 
-    const { getPostBySlug, isAdmin, updatePost, deletePost, isLoaded } = useBlogStore();
+    const { getPostBySlug, isLoaded } = useBlogStore();
     const [post, setPost] = useState<BlogPost | null | undefined>(undefined);
-    const [isEditorOpen, setIsEditorOpen] = useState(false);
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
@@ -56,35 +53,9 @@ export default function BlogPostDetail() {
         setTimeout(() => setCopied(false), 2000);
     };
 
-    const handleDelete = () => {
-        if (confirm(`Are you sure you want to delete "${post.title}"?`)) {
-            deletePost(post.slug);
-            toast.success("Blog post deleted successfully.");
-            router.push("/blog");
-        }
-    };
-
-    const handleSavePost = (updatedData: {
-        title: string;
-        slug?: string;
-        category: string;
-        excerpt: string;
-        content: string;
-        coverImage?: string;
-        author?: string;
-    }) => {
-        const updated = updatePost(post.slug, updatedData);
-        if (updated) {
-            setPost(updated);
-            if (updated.slug !== post.slug) {
-                router.push(`/blog/${updated.slug}`);
-            }
-        }
-    };
-
     return (
         <div className="container mx-auto px-4 pt-32 pb-24 min-h-screen">
-            {/* Top Navigation & Admin Controls */}
+            {/* Top Navigation */}
             <div className="max-w-4xl mx-auto flex items-center justify-between gap-4 mb-8">
                 <Link
                     href="/blog"
@@ -102,25 +73,6 @@ export default function BlogPostDetail() {
                         {copied ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Share2 className="w-3.5 h-3.5" />}
                         {copied ? "Copied" : "Share"}
                     </button>
-
-                    {isAdmin && (
-                        <div className="flex items-center gap-2 bg-muted/40 p-1 rounded-xl border border-primary/30">
-                            <button
-                                onClick={() => setIsEditorOpen(true)}
-                                className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-xs font-bold uppercase tracking-wider shadow-sm"
-                            >
-                                <Edit3 className="w-3.5 h-3.5" />
-                                Edit
-                            </button>
-                            <button
-                                onClick={handleDelete}
-                                className="p-1.5 text-destructive hover:bg-destructive/10 rounded-lg transition-colors"
-                                title="Delete Article"
-                            >
-                                <Trash2 className="w-4 h-4" />
-                            </button>
-                        </div>
-                    )}
                 </div>
             </div>
 
@@ -175,14 +127,6 @@ export default function BlogPostDetail() {
                     />
                 </div>
             </article>
-
-            {/* Editor Modal */}
-            <BlogEditorModal
-                isOpen={isEditorOpen}
-                onClose={() => setIsEditorOpen(false)}
-                initialPost={post}
-                onSave={handleSavePost}
-            />
         </div>
     );
 }
