@@ -45,7 +45,7 @@ export default function BlogPage() {
     }
 
     return (
-        <div className="container mx-auto px-4 pt-28 pb-20 min-h-screen">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 min-h-screen">
             {/* Header Section */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-border/60 pb-8">
                 <div>

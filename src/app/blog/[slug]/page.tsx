@@ -54,7 +54,7 @@ export default function BlogPostDetail() {
     };
 
     return (
-        <div className="container mx-auto px-4 pt-32 pb-24 min-h-screen">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 min-h-screen">
             {/* Top Navigation */}
             <div className="max-w-4xl mx-auto flex items-center justify-between gap-4 mb-8">
                 <Link

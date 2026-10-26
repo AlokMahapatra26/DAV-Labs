@@ -1,52 +1,79 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PencilHighlight } from "@/components/ui/PencilHighlight";
-import { FloatingPaths } from "@/components/kokonutui/background-paths";
+import { ShaderBackground } from "@/components/ui/ShaderBackground";
+import { ArrowRight } from "lucide-react";
 
-export function VerveHero() {
-    return (
-        <section className="w-full flex items-center bg-background pt-32 pb-12 relative overflow-hidden">
-            <div className="absolute inset-0 z-0">
-                <FloatingPaths position={1} />
-            </div>
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    {/* Left Column: Text Content */}
-                    <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
-                        <h1 className="text-3xl md:text-5xl font-heading font-medium uppercase tracking-tight mb-6 leading-tight">
-                            The Only <br />
-                            <PencilHighlight className="italic text-foreground">Thing</PencilHighlight> <br />
-                            You Need
-                        </h1>
-
-                        <p className="text-base md:text-lg text-muted-foreground max-w-xl mb-8 font-light leading-relaxed mx-auto lg:mx-0">
-                            To grow your business. We are the singular force that combines elite engineering, design, and strategy to build the infrastructure of your success.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-6 w-full justify-center lg:justify-start">
-                            <Link href="/contact">
-                                <Button className="rounded-none bg-primary text-primary-foreground hover:bg-primary/85 font-bold text-sm px-8 py-6 uppercase tracking-widest transition-colors duration-300 shadow-md">
-                                    Start A Project
-                                </Button>
-                            </Link>
-                        </div>
-                    </div>
-
-                    {/* Right Column: Video Card */}
-                    <div className="relative h-64 lg:h-[50vh] w-full rounded-3xl overflow-hidden border border-border bg-card shadow-2xl z-10">
-                        <div className="absolute inset-0 bg-black/20 z-10" /> {/* Subtle overlay for depth */}
-                        <video
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            className="w-full h-full object-cover scale-105"
-                        >
-                            <source src="https://q3zd0t4csd.ufs.sh/f/yGVmEWmDTnfHVDMI1lhFyeZXQ1Kp38kEAzGjhbdCOs7vrtH9" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+interface HeroProps {
+  eyebrow?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
+
+export const Hero = ({
+  title = (
+    <span className="flex flex-col gap-2.5 sm:gap-3.5 tracking-normal">
+      <span className="block">
+        <span className="text-white">Complete Tech Solutions: </span>
+        <span className="text-[#38bdf8] drop-shadow-[0_0_20px_rgba(56,189,248,0.35)]">Social Media</span>
+        <span className="text-white/50">,</span>
+      </span>
+      <span className="block lg:whitespace-nowrap">
+        <span className="text-[#38bdf8] drop-shadow-[0_0_20px_rgba(56,189,248,0.35)]">Web Development</span>
+        <span className="text-white/50">, </span>
+        <span className="text-[#38bdf8] drop-shadow-[0_0_20px_rgba(56,189,248,0.35)]">SEO</span>
+        <span className="text-white/50">, </span>
+        <span className="text-[#38bdf8] drop-shadow-[0_0_20px_rgba(56,189,248,0.35)]">Digital &amp; Performance Marketing</span>
+      </span>
+    </span>
+  ),
+  subtitle = "We’re a Tech Solution Agency based in Vapi, Gujarat, India. We help businesses to uplift their online presence and to boost their Lead Generation process.",
+  ctaLabel = "Get Started",
+  ctaHref = "/contact",
+}: HeroProps) => {
+  return (
+    <section id="hero-section" className="overflow-hidden relative w-full">
+      <ShaderBackground className="min-h-[90vh] md:h-[90vh] flex flex-col justify-center items-center">
+        <div className="relative z-10 w-full max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-16 md:pt-36 md:pb-20 text-center flex flex-col items-center justify-center">
+          {/* Main Clean Headline */}
+          <h1 className="text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.35rem] xl:text-[2.6rem] font-bold text-white leading-normal max-w-6xl xl:max-w-7xl">
+            {title}
+          </h1>
+
+          {/* Clean Subtitle */}
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl leading-relaxed">
+            {subtitle}
+          </p>
+
+          {/* Clean CTA Actions */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-8 sm:mt-10">
+            <Link href={ctaHref}>
+              <Button
+                size="lg"
+                className="rounded-full px-7 py-5 text-sm sm:text-base font-semibold bg-white text-black hover:bg-zinc-200 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-xl shadow-black/25"
+              >
+                {ctaLabel}
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full px-7 py-5 text-sm sm:text-base font-medium text-white border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 backdrop-blur-md transition-all duration-200"
+              >
+                Book a call
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </ShaderBackground>
+    </section>
+  );
+};
+
+export { Hero as VerveHero };
+export default Hero;

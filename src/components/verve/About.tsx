@@ -3,8 +3,8 @@ import { ArrowRight } from "lucide-react";
 
 export function VerveAbout() {
     return (
-        <section className="py-12 px-4 bg-background flex justify-center">
-            <div className="container max-w-3xl">
+        <section className="py-12 bg-background">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="bg-card border border-border rounded-3xl p-8 md:p-12 text-center shadow-sm relative overflow-hidden">
                     {/* Decorative Background */}
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />

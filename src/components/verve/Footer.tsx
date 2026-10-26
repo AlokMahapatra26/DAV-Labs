@@ -38,7 +38,7 @@ export function VerveFooter() {
             {/* Optional subtle background pattern or gradient can be added here if needed */}
             <div className="absolute inset-0 bg-muted/20 pointer-events-none" />
 
-            <div className="container max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Top Section: Logo & Socials */}
                 <div className="flex flex-col md:flex-row justify-between items-center border-b border-border/50 pb-8 mb-12 gap-6">
                     <div className="flex items-center">

@@ -70,10 +70,10 @@ export function ClientReelReview({
             <div className="absolute top-1/2 left-0 -translate-y-1/2 w-72 md:w-96 h-72 md:h-96 bg-primary/10 rounded-full blur-[140px] pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-80 md:w-[450px] h-80 md:h-[450px] bg-primary/5 rounded-full blur-[160px] pointer-events-none" />
 
-            <div className="container mx-auto px-4 md:px-6 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Section Header */}
                 <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-                    <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase tracking-tight text-foreground">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-semibold uppercase tracking-tight text-foreground">
                         Client Video <span className="text-primary">Review</span>
                     </h2>
                     <p className="text-muted-foreground text-sm md:text-base mt-3 leading-relaxed">

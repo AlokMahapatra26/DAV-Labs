@@ -30,11 +30,11 @@ const faqs = [
 export function VerveFAQ() {
     return (
         <section className="py-16 bg-background border-b border-dashed border-border">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     {/* Header */}
                     <div className="lg:col-span-4">
-                        <h2 className="text-2xl md:text-4xl font-heading font-medium uppercase mb-4 leading-tight">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-semibold uppercase mb-4 leading-tight">
                             Common <br /> <span className="text-primary">Questions</span>
                         </h2>
                         <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">

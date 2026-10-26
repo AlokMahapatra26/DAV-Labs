@@ -6,7 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 export default function AgencyPage() {
     return (
         <div className="min-h-screen bg-background pt-24 pb-12">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header Section */}
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-dashed border-border pb-8">
                     <motion.div
