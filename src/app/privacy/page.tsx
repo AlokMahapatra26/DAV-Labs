@@ -37,6 +37,16 @@ export default function PrivacyPage() {
                             <h2 className="text-xl md:text-2xl text-foreground mb-4 font-bold uppercase tracking-wider">User Rights</h2>
                             <p className="text-base text-muted-foreground">Users can request to edit or delete their data anytime.</p>
                         </div>
+
+                        <div>
+                            <h2 className="text-xl md:text-2xl text-foreground mb-4 font-bold uppercase tracking-wider">Contact & Office</h2>
+                            <p className="text-base text-muted-foreground leading-relaxed">
+                                H.O 111, Sadlani Plaza, Near Telephone Exchange, Opp Vimal Arced, Char Rasta, GIDC, Vapi- 396 195.
+                            </p>
+                            <p className="text-base text-muted-foreground mt-2">
+                                For privacy inquiries, email us at <a href="mailto:contact@davlabs.in" className="text-primary font-bold hover:underline">contact@davlabs.in</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

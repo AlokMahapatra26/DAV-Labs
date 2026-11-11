@@ -14,6 +14,9 @@ export function Footer() {
                             <p className="text-sm text-muted-foreground max-w-xs">
                                 Crafting digital experiences that merge functionality with radical aesthetics.
                             </p>
+                            <p className="text-xs text-muted-foreground max-w-xs mt-3 leading-relaxed">
+                                H.O 111, Sadlani Plaza, Near Telephone Exchange, Opp Vimal Arced, Char Rasta, GIDC, Vapi- 396 195.
+                            </p>
                         </div>
                     </div>
 

@@ -36,7 +36,7 @@ export interface ShaderShowcaseProps {
 }
 
 export default function ShaderShowcase({
-  badge = "✨ Next-Gen Tech Solutions Agency",
+  badge,
   title,
   subtitle = "We’re a Tech Solution Agency based in Vapi, Gujarat, India. We help businesses to uplift their online presence and to boost their Lead Generation process.",
   primaryCta = { label: "Get Started", href: "/contact" },
@@ -68,26 +68,9 @@ export default function ShaderShowcase({
 
   const defaultTitle = (
     <>
-      <motion.span
-        className="block font-light text-white/90 text-2xl sm:text-3xl md:text-5xl lg:text-6xl mb-2 tracking-wider"
-        style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #06b6d4 30%, #f97316 70%, #ffffff 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-          filter: "url(#text-glow)",
-        }}
-        animate={{
-          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "linear",
-        }}
-      >
+      <span className="block font-bold text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl mb-2 tracking-wider">
         Complete Tech Solutions:
-      </motion.span>
+      </span>
       <span className="block font-black text-white drop-shadow-2xl text-2xl sm:text-4xl md:text-5xl lg:text-6xl">
         Social Media, Web Development, SEO,
       </span>
@@ -101,7 +84,7 @@ export default function ShaderShowcase({
     <div
       id="hero-section"
       ref={containerRef}
-      className={`min-h-screen bg-black relative overflow-hidden flex flex-col justify-between pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-6 sm:px-10 md:px-16 ${className}`}
+      className={`min-h-screen bg-black relative overflow-hidden flex flex-col justify-end pt-32 sm:pt-40 md:pt-48 pb-12 sm:pb-16 md:pb-20 px-6 sm:px-10 md:px-16 ${className}`}
     >
       <svg className="absolute inset-0 w-0 h-0 pointer-events-none" aria-hidden="true">
         <defs>
@@ -264,7 +247,7 @@ export default function ShaderShowcase({
         </header>
       )}
 
-      <main className="relative z-20 max-w-4xl py-4 sm:py-6 md:py-10">
+      <main className="relative z-20 max-w-4xl py-2 sm:py-4 mt-auto mb-2 sm:mb-6 md:mb-10">
         <div className="text-left">
           {badge && (
             <motion.div

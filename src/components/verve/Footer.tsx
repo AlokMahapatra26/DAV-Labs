@@ -113,7 +113,7 @@ export function VerveFooter() {
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <span className="text-sm text-muted-foreground leading-relaxed">
-                                        Gujarat, Valsad, Vapi - 396195
+                                        H.O 111, Sadlani Plaza, Near Telephone Exchange, Opp Vimal Arced, Char Rasta, GIDC, Vapi- 396 195.
                                     </span>
                                 </div>
                             </li>

@@ -4,7 +4,7 @@ import * as React from "react";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Mail, Phone, Headphones } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import * as d3 from "d3";
@@ -20,15 +20,15 @@ const smoothEase = [0.25, 0.1, 0.25, 1] as const;
 
 const CONTACT_LINKS = [
   {
-    icon: Mail,
-    label: "contact@yoursaas.ai",
-    href: "mailto:contact@yoursaas.ai",
+    icon: MapPin,
+    label: "H.O 111, Sadlani Plaza, Near Telephone Exchange, Opp Vimal Arced, Char Rasta, GIDC, Vapi- 396 195.",
+    href: "https://maps.google.com/?q=Sadlani+Plaza+Vapi",
   },
-  { icon: Phone, label: "+1 (800) 321 XX21", href: "tel:+18003214321" },
+  { icon: Phone, label: "+91 73831 49649", href: "tel:+917383149649" },
   {
-    icon: Headphones,
-    label: "support@yoursaas.ai",
-    href: "mailto:support@yoursaas.ai",
+    icon: Mail,
+    label: "contact@davlabs.in",
+    href: "mailto:contact@davlabs.in",
   },
 ];
 
@@ -774,12 +774,14 @@ export default function ContactWithGlobe({
                     delay: 0.3 + i * 0.1,
                     ease: smoothEase,
                   }}
-                  className="group flex items-center gap-3 w-fit text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="group flex items-start gap-3 w-fit text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 group-hover:border-rose-300 dark:group-hover:border-rose-500/40 group-hover:bg-rose-50 dark:group-hover:bg-rose-500/10 flex items-center justify-center shrink-0 transition-all duration-200">
+                  <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 group-hover:border-rose-300 dark:group-hover:border-rose-500/40 group-hover:bg-rose-50 dark:group-hover:bg-rose-500/10 flex items-center justify-center shrink-0 transition-all duration-200 mt-0.5">
                     <Icon className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 group-hover:text-rose-500 dark:group-hover:text-rose-400 transition-colors duration-200" />
                   </div>
-                  {label}
+                  <span className="leading-snug max-w-xs">{label}</span>
                 </motion.a>
               ))}
             </div>
@@ -809,7 +811,7 @@ export default function ContactWithGlobe({
                 Send a message
               </h3>
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Fill out the form and we'll get back to you promptly.
+                Fill out the form and we&apos;ll get back to you promptly.
               </p>
             </div>
 
@@ -832,7 +834,7 @@ export default function ContactWithGlobe({
                 </label>
                 <input
                   type="text"
-                  placeholder="ScrollX UI"
+                  placeholder="Your Company / Brand"
                   className="w-full bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-none focus:border-rose-400 dark:focus:border-rose-500/50 focus:ring-2 focus:ring-rose-500/10 transition-all duration-200"
                 />
               </div>
@@ -844,7 +846,7 @@ export default function ContactWithGlobe({
               </label>
               <input
                 type="email"
-                placeholder="support@scrollxui.com"
+                placeholder="contact@davlabs.in"
                 className="w-full bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-none focus:border-rose-400 dark:focus:border-rose-500/50 focus:ring-2 focus:ring-rose-500/10 transition-all duration-200"
               />
             </div>
